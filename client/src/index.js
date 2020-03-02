@@ -1,5 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
+import GlobalStyles from './components/utils/GlobalStyles'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+  <GlobalStyles>
+    <App />
+  </GlobalStyles>,
+  document.getElementById('root')
+)
