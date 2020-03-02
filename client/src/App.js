@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { MembersVisualisation as MembersPage } from './components/pages/MembersPage'
+import styled from 'styled-components'
 
 function App() {
   const [members, setMembers] = useState([
@@ -21,13 +23,27 @@ function App() {
   ])
 
   return (
-    <div>
-      <header>Rehearsal Room</header>
-      {members.map(member => (
-        <article>{member.name}</article>
-      ))}
-    </div>
+    <Grid>
+      <Header>Rehearsal Room</Header>
+      <MembersPage members={members} />
+    </Grid>
   )
 }
 
 export default App
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-rows: 120px auto 15%;
+  grid-template-areas: 'header' 'stage' 'footer';
+  height: 100vh;
+  margin: 0;
+  width: 100vw;
+`
+const Header = styled.header`
+  display: flex;
+  grid-area: header;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+`

@@ -4,8 +4,9 @@ import App from './App'
 import GlobalStyles from './components/utils/GlobalStyles'
 
 ReactDOM.render(
-  <GlobalStyles>
+  <>
+    <GlobalStyles />
     <App />
-  </GlobalStyles>,
+  </>,
   document.getElementById('root')
 )
