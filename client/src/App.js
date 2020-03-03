@@ -24,6 +24,16 @@ function App() {
       roomAsignment: 'RehearsalRoom_1',
       repetitionDayTime: ['Friday, 16:00 - 19:00', 'Sunday, 14:00 - 22:00'],
     },
+    {
+      id: '003',
+      name: 'Viktor Miller',
+      avatar: './viktor_miller.jpg',
+      band: '',
+      instruments: ['vocals', 'guitar'],
+      roles: ['musician'],
+      roomAsignment: 'RehearsalRoom_1',
+      repetitionDayTime: ['Wendsday, 18:00 - 24:00'],
+    },
   ])
 
   return (
@@ -32,6 +42,7 @@ function App() {
         <LogoText>Rehearsal Room</LogoText>
       </Header>
       <MembersPage members={members} />
+      <Footer>Navigation Elements</Footer>
     </Grid>
   )
 }
@@ -40,11 +51,11 @@ export default App
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 80px auto 15%;
+  grid-template-rows: 80px auto 80px;
   grid-template-areas: 'header' 'stage' 'footer';
-  height: 100vh;
+  height: 100%;
   margin: 0;
-  width: 100vw;
+  width: 100%;
 `
 const Header = styled.header`
   display: flex;
@@ -56,4 +67,11 @@ const Header = styled.header`
 `
 const LogoText = styled.h1`
   background: transparent;
+`
+const Footer = styled.footer`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: footer;
+  background: #0a2a45;
 `
