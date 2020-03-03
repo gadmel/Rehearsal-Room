@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { MembersVisualisation as MembersPage } from './components/pages/MembersPage'
+import Header from './components/Header'
 import styled from 'styled-components'
 
 function App() {
@@ -38,9 +39,7 @@ function App() {
 
   return (
     <Grid>
-      <Header>
-        <LogoText>Rehearsal Room</LogoText>
-      </Header>
+      <Header />
       <MembersPage members={members} />
       <Footer>Navigation Elements</Footer>
     </Grid>
@@ -56,17 +55,6 @@ const Grid = styled.div`
   height: 100%;
   margin: 0;
   width: 100%;
-`
-const Header = styled.header`
-  display: flex;
-  grid-area: header;
-  align-items: center;
-  justify-content: center;
-  background: #0a2a45;
-  margin: 0;
-`
-const LogoText = styled.h1`
-  background: transparent;
 `
 const Footer = styled.footer`
   display: flex;
