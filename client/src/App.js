@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { MembersVisualisation as MembersPage } from './components/pages/MembersPage'
 import Header from './components/Header'
 import styled from 'styled-components'
@@ -38,11 +39,13 @@ function App() {
   ])
 
   return (
-    <Grid>
-      <Header />
-      <MembersPage members={members} />
-      <Footer>Navigation Elements</Footer>
-    </Grid>
+    <Router>
+      <Grid>
+        <Header />
+        <MembersPage members={members} />
+        <Footer>Navigation Elements</Footer>
+      </Grid>
+    </Router>
   )
 }
 
@@ -50,7 +53,7 @@ export default App
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 80px auto 80px;
+  grid-template-rows: 68px auto 68px;
   grid-template-areas: 'header' 'stage' 'footer';
   height: 100%;
   margin: 0;
