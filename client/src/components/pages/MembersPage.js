@@ -10,7 +10,6 @@ export function MembersVisualisation({ members }) {
             <Avatar src={member.avatar} />
             <Column>
               <Name>{member.name}</Name>
-              <Id>ID: {member.id}</Id>
               <Row>
                 {member.roles &&
                   member.roles.map(role => <Tag key={role}>{role}</Tag>)}
@@ -19,7 +18,7 @@ export function MembersVisualisation({ members }) {
                 {member.band ? member.band : member.name}:{' '}
                 {member.repetitionDayTime &&
                   member.repetitionDayTime.map(repetitionTime => (
-                    <div>{repetitionTime}</div>
+                    <div key={repetitionTime}>{repetitionTime}</div>
                   ))}
               </span>
             </Column>
@@ -30,6 +29,7 @@ export function MembersVisualisation({ members }) {
                 <Tag key={member.id + instrument}>{instrument}</Tag>
               ))}
           </Row>
+          {console.info(member.name + ' has the id: ' + member.id)}
         </MemberCard>
       ))}
     </Visualisation>
@@ -52,7 +52,7 @@ const MemberCard = styled.article`
   flex-direction: column;
   background: #145991;
   margin: 12px 12px 12px 12px;
-  min-width: 340px;
+  min-width: 80vw;
   height: fit-content;
   box-shadow: 8px 5px 6px #0a2a45;
 `
@@ -71,7 +71,7 @@ const Column = styled.div`
 `
 
 const Avatar = styled.img`
-  max-width: 200px;
+  width: 100%;
   border-radius: 4px;
   margin: 8px;
 `
@@ -80,10 +80,7 @@ const Name = styled.h3`
   max-width: 100%;
   margin: 6px 4px;
 `
-const Id = styled.span`
-  flex-direction: row;
-  margin: 6px 4px;
-`
+
 const Tag = styled.li`
   display: inline-block;
   font-size: 0.8em;

@@ -17,6 +17,7 @@ function App() {
     {
       id: '002',
       name: 'Alexey Tietz',
+      avatar: './aleksey_tietz.jpeg',
       band: 'XYNior',
       instruments: ['vocals', 'guitar'],
       roles: ['administrator', 'musician'],
