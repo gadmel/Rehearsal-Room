@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export function Member({ member }) {
+function Member({ member }) {
   return (
     <MemberCard>
       <Avatar src={member.avatar} />

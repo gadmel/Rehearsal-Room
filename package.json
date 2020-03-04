@@ -14,7 +14,7 @@
     "prettier": "1.19.1"
   },
   "scripts": {
-    "start": "npm-run-all --parallel client server",
+    "start": "npm-run-all --parallel client",
     "client": "cd client && npm start",
     "postinstall": "cd client && npm i && cd ../server && npm i"
   },

@@ -3,25 +3,40 @@ import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import Member from '../MemberCard'
 import CreateForm from '../CreateForm'
-import ControlBar from '../ControlBar'
+import { ControlBar, ControlBarDisabled } from '../ControlBar'
+
+import useForm from '../../hooks/useForm'
 
 export function MembersVisualisation({ members }) {
+  const { formIsVisible, toggleForm } = useForm()
+
   return (
-    <Grid>
-      <Switch>
+    <Switch>
+      <Grid>
         <Route exact path="/">
-          <Visualisation>
-            {members.map(member => (
-              <Member key={member.id} member={member} />
-            ))}
-          </Visualisation>
-          <ControlBar />
+          {formIsVisible ? (
+            <>
+              <CreateForm />
+              <VisualisationDisabled>
+                {members.map(member => (
+                  <Member key={member.id} member={member} />
+                ))}
+              </VisualisationDisabled>
+              <ControlBarDisabled toggleForm={toggleForm} />
+            </>
+          ) : (
+            <>
+              <Visualisation>
+                {members.map(member => (
+                  <Member key={member.id} member={member} />
+                ))}
+              </Visualisation>
+              <ControlBar toggleForm={toggleForm} />
+            </>
+          )}
         </Route>
-        <Route path="/create-member">
-          <CreateForm />
-        </Route>
-      </Switch>
-    </Grid>
+      </Grid>
+    </Switch>
   )
 }
 const Grid = styled.main`
@@ -44,4 +59,8 @@ const Visualisation = styled.section`
   align-items: flex-start;
   overflow-x: auto;
   position: relative;
+`
+
+const VisualisationDisabled = styled(Visualisation)`
+  filter: brightness(50%);
 `

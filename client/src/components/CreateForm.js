@@ -50,9 +50,17 @@ export default CreateForm
 const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
-  width: 100%;
+  height: 70%;
+  width: 70%;
   padding: 8px;
+
+  justify-self: center;
+  align-self: center;
+  margin: 60px;
+  position: absolute;
+  grid-area: stage;
+  z-index: 100;
+
   align-items: center;
   justify-content: space-between;
 `
