@@ -1,10 +1,16 @@
 {
   "name": "rehearsal-room-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Client for rehearsal-room app.",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
+    "cypress-run": "cypress run",
+    "storybook": "start-storybook -p 9009 -s public",
+    "cypress-open": "cypress open",
+    "cypress-run-headed": "cypress run --headed",
+    "cypress-run-record-key": "cypress run --record --key a786aa76-f375-4d30-9db4-26918ff18d7c",
+    "build-storybook": "build-storybook -s public",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -16,15 +22,31 @@
   "private": true,
   "license": "UNLICENSED",
   "dependencies": {
-    "@testing-library/jest-dom": "4.2.4",
-    "@testing-library/react": "9.4.1",
-    "@testing-library/user-event": "7.2.1",
+    "env-cmd": "10.1.0",
+    "firebase": "7.10.0",
+    "re-base": "4.0.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-hooks-lib": "0.1.0",
     "react-router-dom": "5.1.2",
     "react-scripts": "3.4.0",
     "styled-components": "5.0.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "5.3.14",
+    "@storybook/addon-docs": "5.3.14",
+    "@storybook/addon-knobs": "5.3.14",
+    "@storybook/addon-links": "5.3.14",
+    "@storybook/addons": "5.3.14",
+    "@storybook/preset-create-react-app": "1.5.2",
+    "@storybook/react": "5.3.14",
+    "@testing-library/jest-dom": "5.1.1",
+    "@testing-library/react": "9.4.1",
+    "@testing-library/user-event": "7.2.1",
+    "cypress": "4.1.0",
+    "eslint-plugin-cypress": "2.7.0",
+    "jest-styled-components": "7.0.0",
+    "storybook-addon-styled-component-theme": "1.3.0"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -3,20 +3,27 @@ import styled from 'styled-components'
 
 function Member({ member }) {
   return (
-    <MemberCard>
-      <Avatar src={member.avatar} />
-      <Column>
-        <Name>{member.name}</Name>
-        <Row>
-          {member.roles &&
-            member.roles.map(role => <Tag key={role}>{role}</Tag>)}
+    <MemberCard key={member.id + 'visualisation'}>
+      <Avatar
+        src={member.avatar ? member.avatar : './guitars.png'}
+        key={member.id + 'avatar'}
+      />
+      <Column key={member.id + 'info'}>
+        <Name key={member.name + member.id}> {member.name}</Name>
+        <Row key={member.id + 'roles'}>
+          {member.roles.map(
+            role => (
+              (<Tag key={member.id + 'role:' + role}>{role}</Tag>),
+              console.log(member.roles)
+            )
+          )}
         </Row>
         {member.band ? member.band : member.name}:{' '}
         {member.repetitionDayTime &&
           member.repetitionDayTime.map(repetitionTime => (
             <Column key={repetitionTime}>{repetitionTime}</Column>
           ))}
-        <Row>
+        <Row key={member.id + 'instruments'}>
           {member.instruments &&
             member.instruments.map(instrument => (
               <Tag key={member.id + instrument}>{instrument}</Tag>

@@ -1,49 +1,59 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-import { MembersVisualisation as MembersPage } from './components/pages/MembersPage'
+import useMembers from './hooks/useMembers'
+
+import MembersPage from './components/pages/MembersPage/MembersPage'
 import Header from './components/Header'
+
 import styled from 'styled-components'
 
 function App() {
-  const [members, setMembers] = useState([
-    {
-      id: '001',
-      name: 'Viktor Miller',
-      avatar: './viktor_miller.jpg',
-      band: '',
-      instruments: ['vocals', 'guitar'],
-      roles: ['musician'],
-      roomAsignment: 'RehearsalRoom_1',
-      repetitionDayTime: ['Wendsday, 18:00 - 24:00'],
-    },
-    {
-      id: '002',
-      name: 'Alexey Tietz',
-      avatar: './aleksey_tietz.jpeg',
-      band: 'XYNior',
-      instruments: ['vocals', 'guitar'],
-      roles: ['administrator', 'musician'],
-      roomAsignment: 'RehearsalRoom_1',
-      repetitionDayTime: ['Friday, 16:00 - 19:00', 'Sunday, 14:00 - 22:00'],
-    },
-    {
-      id: '003',
-      name: 'Viktor Miller',
-      avatar: './viktor_miller.jpg',
-      band: '',
-      instruments: ['vocals', 'guitar'],
-      roles: ['musician'],
-      roomAsignment: 'RehearsalRoom_1',
-      repetitionDayTime: ['Wendsday, 18:00 - 24:00'],
-    },
+  const [bands, setBands] = useState([
+    { value: null },
+    { value: 'Nerull', name: 'Nerull' },
+    { value: 'ToNe Dayzy', name: 'ToNe Dayzy' },
+    { value: 'Lola', name: 'Lola' },
+    { value: 'MUZOR', name: 'MUZOR' },
+    { value: 'Inoplanepunks', name: 'Inoplanepunks' },
+    { value: 'XYNior', name: 'XYNior' },
+    { value: 'Frozen Waterfall', name: 'Frozen Waterfall' },
   ])
+
+  const { members, setMembers } = useMembers()
+  // [
+  //   {
+  //     id: '001',
+  //     name: 'Viktor Miller',
+  //     avatar: './viktor_miller.jpg',
+  //     band: '',
+  //     instruments: ['vocals', 'guitar'],
+  //     roles: ['musician'],
+  //     roomAsignment: 'RehearsalRoom_1',
+  //     repetitionDayTime: ['Wendsday, 18:00 - 24:00'],
+  //   },
+  //   {
+  //     id: '002',
+  //     name: 'Alexey Tietz',
+  //     avatar: './aleksey_tietz.jpeg',
+  //     band: 'XYNior',
+  //     instruments: ['vocals', 'guitar'],
+  //     roles: ['administrator', 'musician'],
+  //     roomAsignment: 'RehearsalRoom_1',
+  //     repetitionDayTime: ['Friday, 16:00 - 19:00', 'Sunday, 14:00 - 22:00'],
+  //   },
+  // ]
 
   return (
     <Router>
       <Grid>
         <Header />
-        <MembersPage members={members} />
+        <MembersPage
+          members={members}
+          setMembers={setMembers}
+          bands={bands}
+          setBands={setBands}
+        />
         <Footer>Navigation Elements</Footer>
       </Grid>
     </Router>

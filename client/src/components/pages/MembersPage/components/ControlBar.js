@@ -41,6 +41,7 @@ const Controls = styled.section`
 `
 const ControlsDisabled = styled(Controls)`
   filter: brightness(50%);
+  pointer-events: none;
 `
 
 const ControlOption = styled(NavLink)`
