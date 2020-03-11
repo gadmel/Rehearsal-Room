@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import CreateForm from './components/CreateForm'
+import CreateForm from './components/CreateForm/CreateForm'
 import { ControlBar, ControlBarDisabled } from './components/ControlBar'
 import {
   Visualisation,
@@ -10,17 +10,37 @@ import {
 import useForm from '../../../hooks/useForm'
 import { base } from '../../../base'
 
-function MembersPage({ members, setMembers, bands, setBands }) {
-  const { formIsVisible, toggleForm } = useForm()
+function MembersPage({
+  members,
+  setMembers,
+  bands,
+  setBands,
+  getMembers,
+  postMember,
+  patchMember,
+  deleteMember,
+}) {
+  const {
+    formIsVisible,
+    toggleForm,
+    newMembersInstruments,
+    addNewMembersInstrument,
+    removeNewMembersInstrument,
+    resetNewMembersInstruments,
+  } = useForm()
 
   return (
     <Grid>
-      {console.info('database: ' + base)}
       {formIsVisible ? (
         <>
           <CreateForm
             members={members}
             setMembers={setMembers}
+            postMember={postMember}
+            newMembersInstruments={newMembersInstruments}
+            addNewMembersInstrument={addNewMembersInstrument}
+            removeNewMembersInstrument={removeNewMembersInstrument}
+            resetNewMembersInstruments={resetNewMembersInstruments}
             bands={bands}
             setBands={setBands}
             toggleForm={toggleForm}
@@ -30,7 +50,7 @@ function MembersPage({ members, setMembers, bands, setBands }) {
         </>
       ) : (
         <>
-          <Visualisation members={members} />
+          <Visualisation members={members} deleteMember={deleteMember} />
           <ControlBar toggleForm={toggleForm} />
         </>
       )}
@@ -47,4 +67,6 @@ const Grid = styled.main`
   grid-template-areas: 'visualisation' 'controls';
   margin: 0;
   width: 100%;
+  justify-content: center;
+  align-items: center;
 `

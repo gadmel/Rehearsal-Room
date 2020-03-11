@@ -18,6 +18,6 @@ body {
     'PT Sans' sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
+  font-size: 17px;
 }
 `

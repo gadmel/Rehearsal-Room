@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
-
 import useMembers from './hooks/useMembers'
-
 import MembersPage from './components/pages/MembersPage/MembersPage'
 import Header from './components/Header'
-
 import styled from 'styled-components'
 
 function App() {
@@ -20,30 +17,14 @@ function App() {
     { value: 'Frozen Waterfall', name: 'Frozen Waterfall' },
   ])
 
-  const { members, setMembers } = useMembers()
-  // [
-  //   {
-  //     id: '001',
-  //     name: 'Viktor Miller',
-  //     avatar: './viktor_miller.jpg',
-  //     band: '',
-  //     instruments: ['vocals', 'guitar'],
-  //     roles: ['musician'],
-  //     roomAsignment: 'RehearsalRoom_1',
-  //     repetitionDayTime: ['Wendsday, 18:00 - 24:00'],
-  //   },
-  //   {
-  //     id: '002',
-  //     name: 'Alexey Tietz',
-  //     avatar: './aleksey_tietz.jpeg',
-  //     band: 'XYNior',
-  //     instruments: ['vocals', 'guitar'],
-  //     roles: ['administrator', 'musician'],
-  //     roomAsignment: 'RehearsalRoom_1',
-  //     repetitionDayTime: ['Friday, 16:00 - 19:00', 'Sunday, 14:00 - 22:00'],
-  //   },
-  // ]
-
+  const {
+    members,
+    setMembers,
+    getMembers,
+    postMember,
+    patchMember,
+    deleteMember,
+  } = useMembers()
   return (
     <Router>
       <Grid>
@@ -53,6 +34,10 @@ function App() {
           setMembers={setMembers}
           bands={bands}
           setBands={setBands}
+          getMembers={getMembers}
+          postMember={postMember}
+          patchMember={patchMember}
+          deleteMember={deleteMember}
         />
         <Footer>Navigation Elements</Footer>
       </Grid>

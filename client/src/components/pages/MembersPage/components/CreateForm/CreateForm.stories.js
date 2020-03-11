@@ -2,7 +2,6 @@
 // import { withKnobs, text, boolean } from '@storybook/addon-knobs'
 import React from 'react'
 import CreateForm from './CreateForm'
-
 export default {
   title: 'src/components/pages/MembersPage/components/CreateForm',
   component: CreateForm,
@@ -29,6 +28,10 @@ export const UnstyledCreateForm = () => (
   <CreateForm
     members={members}
     setMembers={() => {}}
+    postMember={() => {}}
+    newMembersInstruments={[]}
+    addNewMembersInstrument={() => {}}
+    resetNewMembersInstruments={() => {}}
     bands={bands}
     setBands={() => {}}
     toggleForm={true}

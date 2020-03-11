@@ -1,4 +1,8 @@
 {
   "projectId": "dhvs2c",
-  "integrationFolder": "./tests"
+  "integrationFolder": "./tests",
+  "baseUrl": "http://localhost:3000",
+  "responseTimeout": 50000,
+  "viewportHeight": 736,
+  "viewportWidth": 414
 }

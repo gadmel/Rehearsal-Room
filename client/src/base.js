@@ -14,7 +14,20 @@ const config = {
 
 const firebaseApp = firebase.initializeApp(config)
 const appAnalytics = firebase.analytics()
-const db = firebase.database(firebaseApp)
-const base = Rebase.createClass(db)
 
-export { base, appAnalytics, firebaseApp }
+const databaseDatabase = firebase.database(firebaseApp)
+const base = Rebase.createClass(databaseDatabase)
+
+const db = firebase.firestore()
+// const RehearsalRoomsRef = db.collection('rehearsal-rooms')
+// const bandsRef = db.collection('bands')
+const MembersDbRef = db.collection('members')
+
+export {
+  base,
+  appAnalytics,
+  firebaseApp,
+  // RehearsalRoomsRef,
+  // bandsRef,
+  MembersDbRef,
+}

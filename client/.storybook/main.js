@@ -7,4 +7,9 @@ module.exports = {
     '@storybook/addon-knobs/register',
     // '@storybook-addon-styled-component-theme/dist/register',
   ],
+  // decorators: [renderComponent => (
+  //   <>
+  //   <GlobalStyles />
+  //   </>
+  // )],
 }

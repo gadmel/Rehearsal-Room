@@ -1,35 +1,43 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Member({ member }) {
+function Member({ member, deleteMember }) {
   return (
-    <MemberCard key={member.id + 'visualisation'}>
+    <MemberCard key={member.id + '_visualisation'}>
+      <DeleteMember
+        key={member.id + '_deleteButton'}
+        onClick={() => {
+          deleteMember(member.id.toString())
+        }}
+      >
+        <i
+          className="fas fa-minus-circle"
+          style={{ background: 'transparent' }}
+        ></i>
+      </DeleteMember>
+
       <Avatar
         src={member.avatar ? member.avatar : './guitars.png'}
-        key={member.id + 'avatar'}
+        key={member.id + '_avatar'}
       />
-      <Column key={member.id + 'info'}>
+      <Column key={member.id + '_info'}>
         <Name key={member.name + member.id}> {member.name}</Name>
-        <Row key={member.id + 'roles'}>
-          {member.roles.map(
-            role => (
-              (<Tag key={member.id + 'role:' + role}>{role}</Tag>),
-              console.log(member.roles)
-            )
-          )}
+        <Row key={member.id + '_roles'}>
+          {member.roles.map(role => (
+            <Tag key={member.id + '_role_' + role}>{role}</Tag>
+          ))}
         </Row>
         {member.band ? member.band : member.name}:{' '}
         {member.repetitionDayTime &&
           member.repetitionDayTime.map(repetitionTime => (
             <Column key={repetitionTime}>{repetitionTime}</Column>
           ))}
-        <Row key={member.id + 'instruments'}>
+        <Row key={member.id + '_instruments'}>
           {member.instruments &&
             member.instruments.map(instrument => (
-              <Tag key={member.id + instrument}>{instrument}</Tag>
+              <Tag key={member.id + '_' + instrument}>{instrument}</Tag>
             ))}
         </Row>
-        {console.info(member.name + ' has the id: ' + member.id)}
       </Column>
     </MemberCard>
   )
@@ -83,4 +91,24 @@ const Tag = styled.li`
   border-radius: 3px;
   color: #135285;
   font-weight: bold;
+`
+
+const DeleteMember = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  justify-self: flex-end;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: transparent;
+  color: beige;
+  margin-left: 8px;
+  margin-top: 8px;
+  padding: 4px;
+  border-radius: 50%;
+  &:hover {
+    color: #135285;
+    background: beige;
+  }
 `
