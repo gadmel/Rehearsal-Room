@@ -34,7 +34,7 @@ const Controls = styled.section`
   flex-grow: 1;
   color: $color-white;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   margin: 0;
   max-width: 100%;
   position: relative;

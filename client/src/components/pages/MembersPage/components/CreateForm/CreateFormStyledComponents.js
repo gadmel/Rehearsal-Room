@@ -6,6 +6,7 @@ export const Form = styled.form`
   height: 70%;
   width: 70%;
   max-height: 800px;
+  min-height: 400px;
   max-width: 400px;
   padding: 8px;
   border: 2px solid beige;
@@ -13,6 +14,9 @@ export const Form = styled.form`
 
   justify-self: center;
   align-self: center;
+
+  top: 15%;
+  left: 15%;
   position: absolute;
   grid-area: stage;
   z-index: 100;
@@ -22,7 +26,7 @@ export const Form = styled.form`
 `
 export const InputField = styled.input`
   background-color: beige;
-  font-size: 0.8em;
+  font-size: 1em;
   display: flex;
   flex-grow: 1;
   max-width: 100%;
@@ -31,7 +35,7 @@ export const InputField = styled.input`
 `
 export const BandSelector = styled.select`
   background-color: beige;
-  font-size: 0.8em;
+  font-size: 1em;
   display: flex;
   flex-grow: 1;
   max-width: 100%;
@@ -124,6 +128,7 @@ export const AddNewMembersInstrument = styled.button`
 `
 export const CloseForm = styled.div`
   position: absolute;
+  right: 12px;
   display: flex;
   font-size: 1.9em;
   font-weight: bold;

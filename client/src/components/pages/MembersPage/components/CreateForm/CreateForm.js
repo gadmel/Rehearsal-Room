@@ -95,7 +95,7 @@ function CreateForm({
         <AddNewMembersInstrument
           onClick={event => {
             event.preventDefault()
-            newInstrumentInputRef.current &&
+            newInstrumentInputRef.current.value &&
               addNewMembersInstrument(newInstrumentInputRef.current.value)
             newInstrumentInputRef.current.value = ''
             newInstrumentInputRef.current.focus()

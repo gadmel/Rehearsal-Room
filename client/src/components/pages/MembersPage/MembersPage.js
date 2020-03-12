@@ -8,7 +8,6 @@ import {
 } from './components/MembersVisualisation'
 
 import useForm from '../../../hooks/useForm'
-import { base } from '../../../base'
 
 function MembersPage({
   members,
@@ -67,6 +66,4 @@ const Grid = styled.main`
   grid-template-areas: 'visualisation' 'controls';
   margin: 0;
   width: 100%;
-  justify-content: center;
-  align-items: center;
 `

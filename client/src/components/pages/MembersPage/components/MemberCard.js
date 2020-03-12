@@ -23,9 +23,10 @@ function Member({ member, deleteMember }) {
       <Column key={member.id + '_info'}>
         <Name key={member.name + member.id}> {member.name}</Name>
         <Row key={member.id + '_roles'}>
-          {member.roles.map(role => (
-            <Tag key={member.id + '_role_' + role}>{role}</Tag>
-          ))}
+          {member.roles &&
+            member.roles.map(role => (
+              <Tag key={member.id + '_role_' + role}>{role}</Tag>
+            ))}
         </Row>
         {member.band ? member.band : member.name}:{' '}
         {member.repetitionDayTime &&
