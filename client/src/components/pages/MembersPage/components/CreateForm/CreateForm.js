@@ -17,7 +17,14 @@ import {
   Submit,
 } from './CreateFormStyledComponents.js'
 
-function CreateForm({ members, setMembers, postMember, bands, toggleForm }) {
+function CreateForm({
+  members,
+  setMembers,
+  postMember,
+  bands,
+  toggleForm,
+  formIsVisible,
+}) {
   const {
     controlledInputValues,
     handleInputChange,
@@ -30,7 +37,10 @@ function CreateForm({ members, setMembers, postMember, bands, toggleForm }) {
   const newInstrumentInputRef = useRef()
   const [formWillBeSubmitted, setFormWillBeSubmitted] = useState(false)
   return (
-    <Form onSubmit={createMember}>
+    <Form
+      onSubmit={createMember}
+      style={!formIsVisible ? { display: 'none' } : {}}
+    >
       <CloseForm onClick={toggleForm}>
         <i className="fas fa-times-circle" style={{ background: '0' }}></i>
       </CloseForm>
@@ -153,10 +163,12 @@ function CreateForm({ members, setMembers, postMember, bands, toggleForm }) {
       avatar: '',
     }
     setFormWillBeSubmitted(true)
+    console.log(controlledInputValues)
     postMember(newMember).then(() => {
       setMembers([...members, newMember])
       resetNewMembersInstruments()
       toggleForm()
+      console.log(controlledInputValues)
       setFormWillBeSubmitted(false)
     })
 

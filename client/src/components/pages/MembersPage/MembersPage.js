@@ -21,18 +21,15 @@ function MembersPage({
 
   return (
     <Grid>
-      {formIsVisible ? (
-        <CreateForm
-          members={members}
-          setMembers={setMembers}
-          postMember={postMember}
-          bands={bands}
-          setBands={setBands}
-          toggleForm={toggleForm}
-        />
-      ) : (
-        ''
-      )}
+      <CreateForm
+        members={members}
+        setMembers={setMembers}
+        postMember={postMember}
+        bands={bands}
+        setBands={setBands}
+        formIsVisible={formIsVisible}
+        toggleForm={toggleForm}
+      />
       <MemberProfilesList
         members={members}
         deleteMember={deleteMember}
