@@ -19,6 +19,8 @@ const databaseDatabase = firebase.database(firebaseApp)
 const base = Rebase.createClass(databaseDatabase)
 
 const db = firebase.firestore()
+const storageRef = firebaseApp.storage().ref()
+const imagesRef = storageRef.child('images')
 // const RehearsalRoomsRef = db.collection('rehearsal-rooms')
 // const bandsRef = db.collection('bands')
 const MembersDbRef = db.collection('members')
@@ -29,5 +31,7 @@ export {
   firebaseApp,
   // RehearsalRoomsRef,
   // bandsRef,
+  storageRef,
+  imagesRef,
   MembersDbRef,
 }

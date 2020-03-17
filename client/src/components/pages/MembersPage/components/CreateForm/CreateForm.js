@@ -1,4 +1,5 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
+import useForm from './useForm'
 import {
   Form,
   Row,
@@ -16,25 +17,23 @@ import {
   Submit,
 } from './CreateFormStyledComponents.js'
 
-function CreateForm({
-  members,
-  setMembers,
-  postMember,
-  newMembersInstruments,
-  addNewMembersInstrument,
-  removeNewMembersInstrument,
-  resetNewMembersInstruments,
-  bands,
-  setBands,
-  toggleForm,
-}) {
+function CreateForm({ members, setMembers, postMember, bands, toggleForm }) {
+  const {
+    controlledInputValues,
+    handleInputChange,
+    newMembersInstruments,
+    addNewMembersInstrument,
+    removeNewMembersInstrument,
+    resetNewMembersInstruments,
+  } = useForm()
   const newInstrumentInputRef = useRef()
-
+  const [formWillBeSubmitted, setFormWillBeSubmitted] = useState(false)
   return (
     <Form onSubmit={createMember}>
       <CloseForm onClick={toggleForm}>
         <i className="fas fa-times-circle" style={{ background: '0' }}></i>
       </CloseForm>
+
       <FormTitle>
         <h3>Create Form</h3>
       </FormTitle>
@@ -42,6 +41,8 @@ function CreateForm({
       <InputField
         type="text"
         name="memberName"
+        value={controlledInputValues.memberName}
+        onChange={handleInputChange}
         placeholder="New member's name"
         autoFocus
       />
@@ -53,38 +54,45 @@ function CreateForm({
             </BandSelectOption>
           ))}
         </BandSelector>
-
-        <InputField type="text" name="newBand" placeholder="new band" />
+        <InputField
+          type="text"
+          name="newBand"
+          value={controlledInputValues.newBand}
+          onChange={handleInputChange}
+          placeholder="new band"
+        />
       </Column>
-      <Row>
-        <Column>
-          <CheckboxDescription>Choose new member's roles:</CheckboxDescription>
-          <Row>
-            <CheckboxRow>
-              <label htmlFor="administrator">
-                <input
-                  type="checkbox"
-                  id="administrator"
-                  name="administrator"
-                  value="administrator"
-                />
-                Administrator
-              </label>
-            </CheckboxRow>
-            <CheckboxRow>
-              <label htmlFor="musician">
-                <input
-                  type="checkbox"
-                  id="musician"
-                  name="musician"
-                  value="musician"
-                />
-                Musician
-              </label>
-            </CheckboxRow>
-          </Row>
-        </Column>
-      </Row>
+
+      <Column>
+        <CheckboxDescription>Choose new member's roles:</CheckboxDescription>
+        <Row>
+          <CheckboxRow>
+            <label htmlFor="administrator">
+              <input
+                type="checkbox"
+                id="administrator"
+                name="administrator"
+                value={controlledInputValues.administrator}
+                onChange={handleInputChange}
+              />
+              Administrator
+            </label>
+          </CheckboxRow>
+          <CheckboxRow>
+            <label htmlFor="musician">
+              <input
+                type="checkbox"
+                id="musician"
+                name="musician"
+                value={controlledInputValues.musician}
+                onChange={handleInputChange}
+              />
+              Musician
+            </label>
+          </CheckboxRow>
+        </Row>
+      </Column>
+
       <Row>
         <InputField
           type="text"
@@ -104,6 +112,7 @@ function CreateForm({
           <i className="fas fa-plus-circle" style={{ background: '0' }}></i>
         </AddNewMembersInstrument>
       </Row>
+
       <RowFlexStart>
         {newMembersInstruments.map(instrument => (
           <Tag
@@ -118,7 +127,9 @@ function CreateForm({
         ))}
       </RowFlexStart>
 
-      <Submit type="submit">Create new member</Submit>
+      <Submit type="submit" disabled={formWillBeSubmitted ? true : false}>
+        Create new member
+      </Submit>
     </Form>
   )
 
@@ -140,10 +151,12 @@ function CreateForm({
       repetitionDayTime: [],
       avatar: '',
     }
+    setFormWillBeSubmitted(true)
     postMember(newMember).then(() => {
       setMembers([...members, newMember])
       resetNewMembersInstruments()
       toggleForm()
+      setFormWillBeSubmitted(false)
     })
 
     function collectRoles() {
@@ -170,12 +183,13 @@ function CreateForm({
       return bandIs
     }
 
-    // The developer is open to speak about more elagant solution for such validation. Code-reviewers welcomed!
     function validateId() {
       const membersIds = members.map(member => {
         return member.id
       })
-      const suggestedNewId = Math.floor(Math.random() * (999 - 1) + 1)
+      const suggestedNewId = Math.floor(
+        Math.random() * (999 - 1) + 1
+      ).toString()
       const validatedNewId = membersIds.includes(suggestedNewId)
         ? validateId()
         : suggestedNewId

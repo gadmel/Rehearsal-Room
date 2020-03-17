@@ -2,29 +2,29 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-export function ControlBar({ toggleForm }) {
+export default function ControlBar({ toggleForm, formIsVisible }) {
   return (
-    <Controls>
-      <ControlOptionCreate onClick={toggleForm}>
-        <i className="fas fa-user-plus"></i>
-      </ControlOptionCreate>
-      <ControlOption to="/edit-member">
-        <i className="fas fa-user-edit"></i>
-      </ControlOption>
-    </Controls>
-  )
-}
-
-export function ControlBarDisabled({ toggleForm }) {
-  return (
-    <ControlsDisabled>
-      <ControlOptionCreate onClick={toggleForm}>
-        <i className="fas fa-user-plus"></i>
-      </ControlOptionCreate>
-      <ControlOption to="/edit-member">
-        <i className="fas fa-user-edit"></i>
-      </ControlOption>
-    </ControlsDisabled>
+    <>
+      {formIsVisible ? (
+        <ControlsDisabled>
+          <ControlOptionCreate onClick={toggleForm}>
+            <i className="fas fa-user-plus"></i>
+          </ControlOptionCreate>
+          <ControlOption to="/edit-member">
+            <i className="fas fa-user-edit"></i>
+          </ControlOption>
+        </ControlsDisabled>
+      ) : (
+        <Controls>
+          <ControlOptionCreate onClick={toggleForm}>
+            <i className="fas fa-user-plus"></i>
+          </ControlOptionCreate>
+          <ControlOption to="/edit-member">
+            <i className="fas fa-user-edit"></i>
+          </ControlOption>
+        </Controls>
+      )}
+    </>
   )
 }
 

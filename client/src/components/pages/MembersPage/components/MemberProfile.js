@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Member({ member, deleteMember }) {
+function MemberProfile({ member, deleteMember }) {
   return (
-    <MemberCard key={member.id + '_visualisation'}>
+    <Member key={member.id + '_visualisation'}>
       <DeleteMember
         key={member.id + '_deleteButton'}
         onClick={() => {
-          deleteMember(member.id.toString())
+          deleteMember(member.id)
         }}
       >
         <i
@@ -40,12 +40,12 @@ function Member({ member, deleteMember }) {
             ))}
         </Row>
       </Column>
-    </MemberCard>
+    </Member>
   )
 }
-export default Member
+export default MemberProfile
 
-const MemberCard = styled.article`
+const Member = styled.article`
   display: flex;
   flex-direction: column;
   background: #145991;
@@ -74,6 +74,7 @@ const Column = styled.div`
 const Avatar = styled.img`
   max-width: 100%;
   max-height: 200px;
+  min-height: 200px;
   object-fit: cover;
 `
 const Name = styled.h3`

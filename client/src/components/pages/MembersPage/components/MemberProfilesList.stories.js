@@ -1,6 +1,5 @@
 import React from 'react'
-import { Visualisation, VisualisationDisabled } from './MembersVisualisation'
-import Member from './MemberCard'
+import MemberProfilesList from './MemberProfilesList'
 import image_aleksey_tietz from './images/aleksey_tietz.jpeg'
 import image_victor_miller from './images/viktor_miller.jpg'
 const members = [
@@ -27,24 +26,24 @@ const members = [
 ]
 
 export default {
-  title: 'src/components/pages/MembersPage/components/MembersVisualisation',
-  component: Visualisation,
+  title: 'src/components/pages/MembersPage/components/MemberProfilesList',
+  component: MemberProfilesList,
 }
 
-export const VisualisationUnstyled = () => {
+export const MemberProfilesListUnstyled = () => {
   return (
-    <Visualisation members={members}>
-      <Member member={members[0]} />
-      <Member member={members[1]} />
-    </Visualisation>
+    <MemberProfilesList
+      members={members}
+      formIsVisible={false}
+    ></MemberProfilesList>
   )
 }
 
-export const visualisationDisabledUnstyled = () => {
+export const MemberProfilesListDisabledUnstyled = () => {
   return (
-    <VisualisationDisabled members={members}>
-      <Member member={members[0]} />
-      <Member member={members[1]} />
-    </VisualisationDisabled>
+    <MemberProfilesList
+      members={members}
+      formIsVisible={true}
+    ></MemberProfilesList>
   )
 }

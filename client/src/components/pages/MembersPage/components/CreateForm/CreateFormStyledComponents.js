@@ -2,25 +2,25 @@ import styled from 'styled-components'
 
 export const Form = styled.form`
   display: flex;
+  grid-area: stage;
   flex-wrap: wrap;
   height: 70%;
   width: 70%;
+  position: absolute;
+  z-index: 100;
+  top: 15%;
+  bottom: 15%;
+  left: 15%;
+  right: 15%;
+  margin: auto;
   max-height: 800px;
   min-height: 400px;
-  max-width: 400px;
+  max-width: 500px;
+  min-width: 300px;
+
   padding: 8px;
   border: 2px solid beige;
   box-shadow: 8px 5px 6px #0a2a45;
-
-  justify-self: center;
-  align-self: center;
-
-  top: 15%;
-  left: 15%;
-  position: absolute;
-  grid-area: stage;
-  z-index: 100;
-
   align-items: flex-start;
   justify-content: flex-end;
 `
@@ -30,7 +30,7 @@ export const InputField = styled.input`
   display: flex;
   flex-grow: 1;
   max-width: 100%;
-  border-radius: 2px;
+  border-radius: 6px;
   padding: 2px;
 `
 export const BandSelector = styled.select`
@@ -38,7 +38,7 @@ export const BandSelector = styled.select`
   font-size: 1em;
   display: flex;
   flex-grow: 1;
-  max-width: 100%;
+  width: 100%;
   border-radius: 2px;
   padding: 2px;
   margin-bottom: 8px;
@@ -96,8 +96,9 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
   background: transparent;
+  padding: auto;
   width: 100%;
-  margin: 0;
+  justify-content: space-between;
 `
 
 export const Tag = styled.li`
@@ -128,7 +129,7 @@ export const AddNewMembersInstrument = styled.button`
 `
 export const CloseForm = styled.div`
   position: absolute;
-  right: 12px;
+  right: 8px;
   display: flex;
   font-size: 1.9em;
   font-weight: bold;

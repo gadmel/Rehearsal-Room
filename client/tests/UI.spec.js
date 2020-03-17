@@ -18,7 +18,7 @@ describe('Rehearsal Room UI', () => {
       .type(name)
       .tab()
       .tab()
-      .type('The Great Miau')
+      .type('Firestore Bangers')
 
     cy.get('[id=musician]')
       .check()

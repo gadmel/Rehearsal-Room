@@ -1,13 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import CreateForm from './components/CreateForm/CreateForm'
-import { ControlBar, ControlBarDisabled } from './components/ControlBar'
-import {
-  Visualisation,
-  VisualisationDisabled,
-} from './components/MembersVisualisation'
-
-import useForm from '../../../hooks/useForm'
+import ControlBar from './components/ControlBar'
+import MemberProfilesList from './components/MemberProfilesList'
 
 function MembersPage({
   members,
@@ -19,40 +14,31 @@ function MembersPage({
   patchMember,
   deleteMember,
 }) {
-  const {
-    formIsVisible,
-    toggleForm,
-    newMembersInstruments,
-    addNewMembersInstrument,
-    removeNewMembersInstrument,
-    resetNewMembersInstruments,
-  } = useForm()
+  const [formIsVisible, setFormIsVisible] = useState(false)
+  function toggleForm() {
+    setFormIsVisible(!formIsVisible)
+  }
 
   return (
     <Grid>
       {formIsVisible ? (
-        <>
-          <CreateForm
-            members={members}
-            setMembers={setMembers}
-            postMember={postMember}
-            newMembersInstruments={newMembersInstruments}
-            addNewMembersInstrument={addNewMembersInstrument}
-            removeNewMembersInstrument={removeNewMembersInstrument}
-            resetNewMembersInstruments={resetNewMembersInstruments}
-            bands={bands}
-            setBands={setBands}
-            toggleForm={toggleForm}
-          />
-          <VisualisationDisabled members={members} />
-          <ControlBarDisabled toggleForm={toggleForm} />
-        </>
+        <CreateForm
+          members={members}
+          setMembers={setMembers}
+          postMember={postMember}
+          bands={bands}
+          setBands={setBands}
+          toggleForm={toggleForm}
+        />
       ) : (
-        <>
-          <Visualisation members={members} deleteMember={deleteMember} />
-          <ControlBar toggleForm={toggleForm} />
-        </>
+        ''
       )}
+      <MemberProfilesList
+        members={members}
+        deleteMember={deleteMember}
+        formIsVisible={formIsVisible}
+      />
+      <ControlBar toggleForm={toggleForm} formIsVisible={formIsVisible} />
     </Grid>
   )
 }

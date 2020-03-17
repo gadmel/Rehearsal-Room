@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { firebaseApp, MembersDbRef } from '../base'
+import { firebaseApp, MembersDbRef, storageRef } from '../base'
 
 function useMembers() {
   const [members, setMembers] = useState([])
@@ -20,14 +20,14 @@ function useMembers() {
 
   function postMember(data) {
     return (
-      MembersDbRef.doc(data.id.toString()).set(data),
-      MembersDbRef.doc(data.id.toString())
+      MembersDbRef.doc(data.id).set(data),
+      MembersDbRef.doc(data.id)
         .get()
         .then(memberRef => {
           const memberId = memberRef.id
           MembersDbRef.doc(memberId).update({
             id: memberId,
-            // here you can enreach the doc with states from the application!
+            // here I could enreach the doc with states from the application!
           })
           return memberId
         })
@@ -39,6 +39,9 @@ function useMembers() {
                 return member.data()
               }
             })
+        })
+        .catch(error => {
+          console.error('Error adding new member: ', error)
         })
     )
   }
@@ -61,19 +64,6 @@ function useMembers() {
       })
   }
 
-  // IMPORT END!
-
-  useEffect(() => {
-    MembersDbRef.onSnapshot(snapshot => {
-      const newMembers = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-      }))
-      setMembers(newMembers)
-    })
-  }, [])
-
-  // another version
   // useEffect(() => {
   //   MembersDbRef.onSnapshot(snapshot => {
   //     const newMembers = snapshot.docs.map(doc => ({
@@ -84,6 +74,25 @@ function useMembers() {
   //   })
   // }, [])
 
+  useEffect(() => {
+    getMembers().then(res => setMembers(res))
+  }, [setMembers])
+
+  // useEffect(() => {
+  //   MembersDbRef.onSnapshot(snapshot => {
+  //     const promises = snapshot.docs.map(doc =>
+  //       storageRef.child(doc.data().userPicPath).getDownloadUrl()
+  //     )
+  //     Promise.all(promises).then(downloadPaths => {
+  //       const newMembers = snapshot.docs.map((member, index) => ({
+  //         id: member.id,
+  //         ...member.data(),
+  //         userPicPath: downloadPaths[index],
+  //       }))
+  //       setMembers(newMembers)
+  //     })
+  //   })
+  // }, [])
   return {
     members,
     setMembers,
@@ -93,5 +102,4 @@ function useMembers() {
     deleteMember,
   }
 }
-
 export default useMembers

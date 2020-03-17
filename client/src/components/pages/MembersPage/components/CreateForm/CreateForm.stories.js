@@ -1,5 +1,3 @@
-// import { action } from '@storybook/addon-actions'
-// import { withKnobs, text, boolean } from '@storybook/addon-knobs'
 import React from 'react'
 import CreateForm from './CreateForm'
 export default {
@@ -20,6 +18,7 @@ const members = [
   },
 ]
 const bands = [
+  { value: null, name: '' },
   { value: 'Nerull', name: 'Nerull' },
   { value: 'ToNe Dayzy', name: 'ToNe Dayzy' },
 ]
@@ -34,6 +33,7 @@ export const UnstyledCreateForm = () => (
     resetNewMembersInstruments={() => {}}
     bands={bands}
     setBands={() => {}}
-    toggleForm={true}
+    toggleForm={() => {}}
+    formWillBeSubmitted={false}
   />
 )
