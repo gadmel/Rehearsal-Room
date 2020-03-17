@@ -64,19 +64,19 @@ function useMembers() {
       })
   }
 
-  // useEffect(() => {
-  //   MembersDbRef.onSnapshot(snapshot => {
-  //     const newMembers = snapshot.docs.map(doc => ({
-  //       id: doc.id,
-  //       ...doc.data(),
-  //     }))
-  //     setMembers(newMembers)
-  //   })
-  // }, [])
-
   useEffect(() => {
-    getMembers().then(res => setMembers(res))
+    MembersDbRef.onSnapshot(snapshot => {
+      const newMembers = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      setMembers(newMembers)
+    })
   }, [setMembers])
+
+  // useEffect(() => {
+  //   getMembers().then(res => setMembers(res))
+  // }, [setMembers])
 
   // useEffect(() => {
   //   MembersDbRef.onSnapshot(snapshot => {

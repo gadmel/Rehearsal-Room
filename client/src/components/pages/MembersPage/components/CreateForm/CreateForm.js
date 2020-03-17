@@ -26,6 +26,7 @@ function CreateForm({ members, setMembers, postMember, bands, toggleForm }) {
     removeNewMembersInstrument,
     resetNewMembersInstruments,
   } = useForm()
+
   const newInstrumentInputRef = useRef()
   const [formWillBeSubmitted, setFormWillBeSubmitted] = useState(false)
   return (
@@ -72,7 +73,7 @@ function CreateForm({ members, setMembers, postMember, bands, toggleForm }) {
                 type="checkbox"
                 id="administrator"
                 name="administrator"
-                value={controlledInputValues.administrator}
+                value="administrator"
                 onChange={handleInputChange}
               />
               Administrator
@@ -84,7 +85,7 @@ function CreateForm({ members, setMembers, postMember, bands, toggleForm }) {
                 type="checkbox"
                 id="musician"
                 name="musician"
-                value={controlledInputValues.musician}
+                value="musician"
                 onChange={handleInputChange}
               />
               Musician
