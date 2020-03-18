@@ -48,7 +48,7 @@ export default MemberProfile
 const Member = styled.article`
   display: flex;
   flex-direction: column;
-  background: #145991;
+  background: #3a5e85;
   margin-right: 24px;
   min-width: 240px;
   max-width: 75vw;
@@ -81,17 +81,18 @@ const Name = styled.h3`
   min-width: fit-content;
   background: transparent;
   margin: 6px 0 0 0;
+  font-size: 1.75em;
 `
 
 const Tag = styled.li`
   display: inline-block;
-  font-size: 0.8em;
+  font-size: 0.86em;
   margin: 4px 8px 8px 0;
   padding: 1px 6px;
-  background: beige;
-  border: 2px solid #1d80d1;
+  background: #9bb5d1;
+  border: 2px solid #243a52;
   border-radius: 3px;
-  color: #135285;
+  color: #243a52;
   font-weight: bold;
 `
 
@@ -103,14 +104,14 @@ const DeleteMember = styled.div`
   align-items: center;
   font-size: 1.5em;
   font-weight: bold;
-  background-color: transparent;
-  color: beige;
+  background-color: white;
+  color: #3a5e85;
   margin-left: 8px;
   margin-top: 8px;
   padding: 4px;
   border-radius: 50%;
   &:hover {
-    color: #135285;
-    background: beige;
+    color: #3a5e85;
+    background: #9bb5d1;
   }
 `

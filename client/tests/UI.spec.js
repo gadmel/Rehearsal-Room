@@ -9,7 +9,7 @@ describe('Rehearsal Room UI', () => {
 
   it('should visit the client site', () => {
     cy.visit('/')
-    cy.get('header').should('contain', 'Rehearsal Room')
+    cy.get('header').should('contain', 'Rehearsal R')
   })
 
   it('should create a new member, who plays bass in the band, which is not in the list of bands yet', () => {

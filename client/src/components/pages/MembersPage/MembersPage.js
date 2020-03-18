@@ -45,7 +45,7 @@ export default MembersPage
 const Grid = styled.main`
   grid-area: stage;
   display: grid;
-  grid-template-rows: auto 130px;
+  grid-template-rows: auto 56px;
   grid-template-areas: 'visualisation' 'controls';
   margin: 0;
   width: 100%;

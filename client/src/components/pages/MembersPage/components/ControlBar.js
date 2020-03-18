@@ -52,7 +52,7 @@ const ControlOption = styled(NavLink)`
   justify-self: stretch;
   align-items: center;
   color: white;
-  font-size: 2.4rem;
+  font-size: 2rem;
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -73,7 +73,7 @@ const ControlOptionCreate = styled.div`
   justify-self: stretch;
   align-items: center;
   color: white;
-  font-size: 2.4rem;
+  font-size: 2rem;
   background-color: transparent;
   margin: 0;
   padding: 0;

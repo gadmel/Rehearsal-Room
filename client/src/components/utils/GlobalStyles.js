@@ -4,7 +4,7 @@ export default createGlobalStyle`
 
 * {
   box-sizing: border-box;
-  background: #135285;
+  background: #3A5E85;
 }
 
 body {

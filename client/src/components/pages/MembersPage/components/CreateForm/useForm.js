@@ -5,7 +5,7 @@ export default function useForm() {
 
   const [controlledInputValues, setControlledInputValues] = useState([])
 
-  const handleInputChange = event => {
+  function handleInputChange(event) {
     const value =
       event.target.type === 'checkbox'
         ? event.target.checked
@@ -15,6 +15,10 @@ export default function useForm() {
       ...controlledInputValues,
       [name]: value,
     }))
+  }
+
+  function resetInputValues() {
+    setControlledInputValues([])
   }
 
   function addNewMembersInstrument(newInstrument) {
@@ -39,6 +43,7 @@ export default function useForm() {
   return {
     controlledInputValues,
     handleInputChange,
+    resetInputValues,
     newMembersInstruments,
     addNewMembersInstrument,
     removeNewMembersInstrument,

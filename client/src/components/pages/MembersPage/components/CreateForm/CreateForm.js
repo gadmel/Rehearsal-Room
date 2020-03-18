@@ -28,6 +28,7 @@ function CreateForm({
   const {
     controlledInputValues,
     handleInputChange,
+    resetInputValues,
     newMembersInstruments,
     addNewMembersInstrument,
     removeNewMembersInstrument,
@@ -171,6 +172,8 @@ function CreateForm({
       console.log(controlledInputValues)
       setFormWillBeSubmitted(false)
     })
+    // Why does this reset not work??
+    resetInputValues()
 
     function collectRoles() {
       const rawRoles = [

@@ -40,7 +40,10 @@ const MemberProfilesListStyled = styled.section`
   width: 100%;
   margin: 0;
   padding: 12px 12px 16px 12px;
-  background: #d5c9b7;
+
+  /* background: #9bb5d1; */
+  /* background: #406d91; */
+  background: #9bb5d1;
   color: white;
   align-items: flex-start;
   overflow-x: auto;
