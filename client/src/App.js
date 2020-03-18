@@ -1,37 +1,48 @@
 import React, { useState } from 'react'
-import { MembersVisualisation as MembersPage } from './components/pages/MembersPage'
+import { BrowserRouter as Router } from 'react-router-dom'
+import useMembers from './hooks/useMembers'
+import MembersPage from './components/pages/MembersPage/MembersPage'
+import Header from './components/Header'
 import styled from 'styled-components'
 
 function App() {
-  const [members, setMembers] = useState([
-    {
-      id: '001',
-      name: 'Viktor Miller',
-      avatar: './viktor_miller.jpg',
-      band: '',
-      instruments: ['vocals', 'guitar'],
-      roles: ['musician'],
-      roomAsignment: 'RehearsalRoom_1',
-      repetitionDayTime: ['Wendsday, 18:00 - 24:00'],
-    },
-    {
-      id: '002',
-      name: 'Alexey Tietz',
-      band: 'XYNior',
-      instruments: ['vocals', 'guitar'],
-      roles: ['administrator', 'musician'],
-      roomAsignment: 'RehearsalRoom_1',
-      repetitionDayTime: ['Friday, 16:00 - 19:00', 'Sunday, 14:00 - 22:00'],
-    },
+  const [bands, setBands] = useState([
+    { value: null },
+    { value: 'Nerull', name: 'Nerull' },
+    { value: 'ToNe Dayzy', name: 'ToNe Dayzy' },
+    { value: 'Lola', name: 'Lola' },
+    { value: 'MUZOR', name: 'MUZOR' },
+    { value: 'Inoplanepunks', name: 'Inoplanepunks' },
+    { value: 'XYNior', name: 'XYNior' },
+    { value: 'Frozen Waterfall', name: 'Frozen Waterfall' },
   ])
 
+  const {
+    members,
+    setMembers,
+    getMembers,
+    postMember,
+    patchMember,
+    deleteMember,
+  } = useMembers()
+
   return (
-    <Grid>
-      <Header>
-        <LogoText>Rehearsal Room</LogoText>
-      </Header>
-      <MembersPage members={members} />
-    </Grid>
+    <Router>
+      <Grid>
+        <Header />
+        <MembersPage
+          members={members}
+          setMembers={setMembers}
+          bands={bands}
+          setBands={setBands}
+          getMembers={getMembers}
+          postMember={postMember}
+          patchMember={patchMember}
+          deleteMember={deleteMember}
+        />
+        <Footer>Navigation Elements</Footer>
+      </Grid>
+    </Router>
   )
 }
 
@@ -39,20 +50,16 @@ export default App
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 80px auto 15%;
+  grid-template-rows: 68px auto 68px;
   grid-template-areas: 'header' 'stage' 'footer';
-  height: 100vh;
+  height: 100%;
   margin: 0;
-  width: 100vw;
+  width: 100%;
 `
-const Header = styled.header`
+const Footer = styled.footer`
   display: flex;
-  grid-area: header;
   align-items: center;
   justify-content: center;
+  grid-area: footer;
   background: #0a2a45;
-  margin: 0;
-`
-const LogoText = styled.h1`
-  background: transparent;
 `
