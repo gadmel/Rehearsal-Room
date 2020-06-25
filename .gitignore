@@ -19,6 +19,8 @@ client/src/stories
 .DS_Store
 /client/storybook-static
 /client/.env
+/client/src/.credentials.json
+/client/src/credentials.json
 snippets.js
 .env.local
 .env.development.local
