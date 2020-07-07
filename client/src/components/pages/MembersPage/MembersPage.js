@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import CreateForm from './components/CreateForm/CreateForm'
 import { ControlBar, ControlBarDisabled } from './components/ControlBar'
@@ -15,6 +15,7 @@ function MembersPage({
   bands,
   setBands,
   getMembers,
+  getMemberById,
   postMember,
   patchMember,
   deleteMember,
@@ -22,11 +23,28 @@ function MembersPage({
   const {
     formIsVisible,
     toggleForm,
+    fillFormWithData,
     newMembersInstruments,
     addNewMembersInstrument,
     removeNewMembersInstrument,
     resetNewMembersInstruments,
+    stateOfAMemberToEdit,
+    setStateOfAMemberToEdit,
   } = useForm()
+
+  const [chooseMemberToEdit, setChooseMemberToEdit] = useState(false)
+
+  function toggleChooseMemberMode() {
+    setChooseMemberToEdit(!chooseMemberToEdit)
+  }
+
+  function selectMemberToEdit(Member) {
+    console.log(Member)
+    setStateOfAMemberToEdit(Member)
+    fillFormWithData(Member)
+    toggleChooseMemberMode()
+    toggleForm()
+  }
 
   return (
     <Grid>
@@ -45,12 +63,25 @@ function MembersPage({
             toggleForm={toggleForm}
           />
           <VisualisationDisabled members={members} />
-          <ControlBarDisabled toggleForm={toggleForm} />
+          <ControlBarDisabled
+            toggleForm={toggleForm}
+            chooseMemberToEdit={chooseMemberToEdit}
+            toggleChooseMemberMode={toggleChooseMemberMode}
+          />
         </>
       ) : (
         <>
-          <Visualisation members={members} deleteMember={deleteMember} />
-          <ControlBar toggleForm={toggleForm} />
+          <Visualisation
+            members={members}
+            deleteMember={deleteMember}
+            chooseMemberToEdit={chooseMemberToEdit}
+            selectMemberToEdit={selectMemberToEdit}
+          />
+          <ControlBar
+            toggleForm={toggleForm}
+            chooseMemberToEdit={chooseMemberToEdit}
+            toggleChooseMemberMode={toggleChooseMemberMode}
+          />
         </>
       )}
     </Grid>

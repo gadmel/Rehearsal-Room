@@ -22,7 +22,7 @@ const db = firebase.firestore()
 // const RehearsalRoomsRef = db.collection('rehearsal-rooms')
 // const bandsRef = db.collection('bands')
 const MembersDbRef = db.collection('members')
-
+const imagesDbRef = db.collection('images')
 export {
   base,
   appAnalytics,
@@ -30,4 +30,5 @@ export {
   // RehearsalRoomsRef,
   // bandsRef,
   MembersDbRef,
+  imagesDbRef,
 }

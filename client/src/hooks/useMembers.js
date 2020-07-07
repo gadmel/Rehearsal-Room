@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { firebaseApp, MembersDbRef } from '../base'
+import { MembersDbRef, imagesDbRef } from '../base'
 
 function useMembers() {
   const [members, setMembers] = useState([])
@@ -16,6 +16,10 @@ function useMembers() {
 
   function getMembers() {
     return fetchMembers()
+  }
+
+  function getMemberById(memberId) {
+    MembersDbRef.doc(memberId).get()
   }
 
   function postMember(data) {
@@ -61,13 +65,13 @@ function useMembers() {
       })
   }
 
-  // IMPORT END!
-
   useEffect(() => {
     MembersDbRef.onSnapshot(snapshot => {
+      //  const storage = firebase.firestore.collection('images').storage().ref()
       const newMembers = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data(),
+        //  imagePath: downloadURLs[index],
       }))
       setMembers(newMembers)
     })
@@ -88,6 +92,7 @@ function useMembers() {
     members,
     setMembers,
     getMembers,
+    getMemberById,
     postMember,
     patchMember,
     deleteMember,

@@ -8,12 +8,16 @@ client/node_modules
 
 # testing
 /coverage
+client/public/google80f8db1e8fba14c0.html
+client/src/.credentials.json
+client/src/credentials.json
 
 # production
 .firebase
 client/build
 client/cypress
 client/src/stories
+/functions
 
 # misc
 .DS_Store

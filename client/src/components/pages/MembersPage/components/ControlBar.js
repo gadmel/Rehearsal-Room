@@ -1,29 +1,38 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-export function ControlBar({ toggleForm }) {
+export function ControlBar({
+  toggleForm,
+  chooseMemberToEdit,
+  toggleChooseMemberMode,
+}) {
   return (
     <Controls>
       <ControlOptionCreate onClick={toggleForm}>
         <i className="fas fa-user-plus"></i>
       </ControlOptionCreate>
-      <ControlOption to="/edit-member">
+      <ControlOptionEdit onClick={toggleChooseMemberMode}>
         <i className="fas fa-user-edit"></i>
-      </ControlOption>
+      </ControlOptionEdit>
     </Controls>
   )
 }
 
-export function ControlBarDisabled({ toggleForm }) {
+export function ControlBarDisabled({
+  toggleForm,
+  chooseMemberToEdit,
+  toggleChooseMemberMode,
+}) {
   return (
     <ControlsDisabled>
       <ControlOptionCreate onClick={toggleForm}>
         <i className="fas fa-user-plus"></i>
       </ControlOptionCreate>
-      <ControlOption to="/edit-member">
+      <ControlOptionEdit
+      //onClick={toggleChooseMemberMode}
+      >
         <i className="fas fa-user-edit"></i>
-      </ControlOption>
+      </ControlOptionEdit>
     </ControlsDisabled>
   )
 }
@@ -44,7 +53,7 @@ const ControlsDisabled = styled(Controls)`
   pointer-events: none;
 `
 
-const ControlOption = styled(NavLink)`
+const ControlOptionEdit = styled.div`
   display: flex;
   flex-grow: 1;
   text-decoration: none;

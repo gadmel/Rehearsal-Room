@@ -21,6 +21,7 @@ function App() {
     members,
     setMembers,
     getMembers,
+    getMemberById,
     postMember,
     patchMember,
     deleteMember,
@@ -36,6 +37,7 @@ function App() {
           bands={bands}
           setBands={setBands}
           getMembers={getMembers}
+          getMemberById={getMemberById}
           postMember={postMember}
           patchMember={patchMember}
           deleteMember={deleteMember}

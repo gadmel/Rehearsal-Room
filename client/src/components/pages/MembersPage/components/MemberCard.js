@@ -1,48 +1,91 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Member({ member, deleteMember }) {
-  return (
-    <MemberCard key={member.id + '_visualisation'}>
-      <DeleteMember
-        key={member.id + '_deleteButton'}
-        onClick={() => {
-          deleteMember(member.id.toString())
-        }}
-      >
-        <i
-          className="fas fa-minus-circle"
-          style={{ background: 'transparent' }}
-        ></i>
-      </DeleteMember>
+function Member({
+  member,
+  deleteMember,
+  chooseMemberToEdit,
+  selectMemberToEdit,
+}) {
+  console.error('Place')
+  console.error(chooseMemberToEdit)
 
-      <Avatar
-        src={member.avatar ? member.avatar : './guitars.png'}
-        key={member.id + '_avatar'}
-      />
-      <Column key={member.id + '_info'}>
-        <Name key={member.name + member.id}> {member.name}</Name>
-        <Row key={member.id + '_roles'}>
-          {member.roles &&
-            member.roles.map(role => (
-              <Tag key={member.id + '_role_' + role}>{role}</Tag>
-            ))}
-        </Row>
-        {member.band ? member.band : member.name}:{' '}
-        {member.repetitionDayTime &&
-          member.repetitionDayTime.map(repetitionTime => (
-            <Column key={repetitionTime}>{repetitionTime}</Column>
-          ))}
-        <Row key={member.id + '_instruments'}>
-          {member.instruments &&
-            member.instruments.map(instrument => (
-              <Tag key={member.id + '_' + instrument}>{instrument}</Tag>
-            ))}
-        </Row>
-      </Column>
-    </MemberCard>
+  return (
+    <>
+      {chooseMemberToEdit ? (
+        <MemberCardInChooseMode
+          key={member.id + '_visualisation'}
+          onClick={() => selectMemberToEdit(member)}
+        >
+          <Avatar
+            src={member.avatar ? member.avatar : './guitars.png'}
+            key={member.id + '_avatar'}
+          />
+          <Column key={member.id + '_info'}>
+            <Name key={member.name + member.id}> {member.name}</Name>
+            <Row key={member.id + '_roles'}>
+              {member.roles &&
+                member.roles.map(role => (
+                  <Tag key={member.id + '_role_' + role}>{role}</Tag>
+                ))}
+            </Row>
+            {member.band ? member.band : member.name}:{' '}
+            {member.repetitionDayTime &&
+              member.repetitionDayTime.map(repetitionTime => (
+                <Column key={repetitionTime}>{repetitionTime}</Column>
+              ))}
+            <Row key={member.id + '_instruments'}>
+              {member.instruments &&
+                member.instruments.map(instrument => (
+                  <Tag key={member.id + '_' + instrument}>{instrument}</Tag>
+                ))}
+            </Row>
+          </Column>
+        </MemberCardInChooseMode>
+      ) : (
+        <MemberCard key={member.id + '_visualisation'}>
+          <DeleteMember
+            key={member.id + '_deleteButton'}
+            onClick={() => {
+              deleteMember(member.id.toString())
+            }}
+          >
+            <i
+              className="fas fa-minus-circle"
+              style={{ background: 'transparent' }}
+            ></i>
+          </DeleteMember>
+
+          <Avatar
+            src={member.avatar ? member.avatar : './guitars.png'}
+            key={member.id + '_avatar'}
+          />
+          <Column key={member.id + '_info'}>
+            <Name key={member.name + member.id}> {member.name}</Name>
+            <Row key={member.id + '_roles'}>
+              {member.roles &&
+                member.roles.map(role => (
+                  <Tag key={member.id + '_role_' + role}>{role}</Tag>
+                ))}
+            </Row>
+            {member.band ? member.band : member.name}:{' '}
+            {member.repetitionDayTime &&
+              member.repetitionDayTime.map(repetitionTime => (
+                <Column key={repetitionTime}>{repetitionTime}</Column>
+              ))}
+            <Row key={member.id + '_instruments'}>
+              {member.instruments &&
+                member.instruments.map(instrument => (
+                  <Tag key={member.id + '_' + instrument}>{instrument}</Tag>
+                ))}
+            </Row>
+          </Column>
+        </MemberCard>
+      )}
+    </>
   )
 }
+
 export default Member
 
 const MemberCard = styled.article`
@@ -55,6 +98,12 @@ const MemberCard = styled.article`
   height: 100%;
   box-shadow: 8px 5px 6px #0a2a45;
 `
+
+const MemberCardInChooseMode = styled(MemberCard)`
+  border: 2px, solid;
+  box-shadow: 8px 3px 6px gold;
+`
+
 const Row = styled.div`
   display: flex;
   flex-direction: row;

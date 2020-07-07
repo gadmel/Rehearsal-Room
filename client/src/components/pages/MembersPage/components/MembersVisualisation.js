@@ -2,21 +2,44 @@ import React from 'react'
 import styled from 'styled-components'
 import Member from './MemberCard'
 
-export function Visualisation({ members, deleteMember }) {
+export function Visualisation({
+  members,
+  deleteMember,
+  chooseMemberToEdit,
+  selectMemberToEdit,
+}) {
   return (
-    <VisualisationStyled>
-      {members &&
-        members.map(member => (
-          <Member
-            key={member.id + 'visualisation'}
-            member={member}
-            deleteMember={deleteMember}
-          />
-        ))}
-    </VisualisationStyled>
+    <>
+      {
+        (chooseMemberToEdit = false ? (
+          <VisualisationStyled>
+            {members &&
+              members.map(member => (
+                <Member
+                  key={member.id + 'visualisation'}
+                  member={member}
+                  deleteMember={deleteMember}
+                />
+              ))}
+          </VisualisationStyled>
+        ) : (
+          <VisualisationStyled>
+            {members &&
+              members.map(member => (
+                <Member
+                  key={member.id + 'visualisation'}
+                  member={member}
+                  deleteMember={deleteMember}
+                  chooseMemberToEdit={chooseMemberToEdit}
+                  selectMemberToEdit={selectMemberToEdit}
+                />
+              ))}
+          </VisualisationStyled>
+        ))
+      }
+    </>
   )
 }
-
 export function VisualisationDisabled({ members }) {
   return (
     <VisualisationDisabledStyled>
