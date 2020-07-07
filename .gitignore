@@ -12,7 +12,11 @@ client/node_modules
 # production
 .firebase
 client/build
-client/cypress
+
+!client/cypress
+client/cypress/*
+!client/cypress/support
+
 client/src/stories
 
 # misc
