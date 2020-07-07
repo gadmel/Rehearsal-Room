@@ -1,6 +1,6 @@
 {
   "name": "rehearsal-room-client",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Client for rehearsal-room app.",
   "main": "index.js",
   "scripts": {
@@ -23,13 +23,13 @@
   "private": true,
   "license": "UNLICENSED",
   "dependencies": {
-    "firebase": "7.10.0",
+    "firebase": "^7.15.5",
     "re-base": "4.0.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-hooks-lib": "0.1.0",
     "react-router-dom": "5.1.2",
-    "react-scripts": "3.4.0",
+    "react-scripts": "^3.4.1",
     "styled-components": "5.0.1"
   },
   "devDependencies": {
@@ -44,7 +44,7 @@
     "@testing-library/jest-dom": "5.1.1",
     "@testing-library/react": "9.4.1",
     "@testing-library/user-event": "7.2.1",
-    "cypress": "4.1.0",
+    "cypress": "^4.9.0",
     "cypress-plugin-tab": "1.0.5",
     "eslint-plugin-cypress": "2.7.0",
     "jest-styled-components": "7.0.0",
