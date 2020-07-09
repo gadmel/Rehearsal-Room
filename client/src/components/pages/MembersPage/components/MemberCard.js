@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Member({ member, deleteMember }) {
   return (
@@ -10,10 +11,10 @@ function Member({ member, deleteMember }) {
           deleteMember(member.id.toString())
         }}
       >
-        <i
-          className="fas fa-minus-circle"
+        <FontAwesomeIcon
+          icon={'minus-circle'}
           style={{ background: 'transparent' }}
-        ></i>
+        />
       </DeleteMember>
 
       <Avatar

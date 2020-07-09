@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import useMembers from './hooks/useMembers'
-import MembersPage from './components/pages/MembersPage/MembersPage'
-import Header from './components/Header'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
+import useMembers from './hooks/useMembers'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import MembersPage from './components/pages/MembersPage/MembersPage'
 
 function App() {
   const [bands, setBands] = useState([
@@ -30,17 +31,21 @@ function App() {
     <Router>
       <Grid>
         <Header />
-        <MembersPage
-          members={members}
-          setMembers={setMembers}
-          bands={bands}
-          setBands={setBands}
-          getMembers={getMembers}
-          postMember={postMember}
-          patchMember={patchMember}
-          deleteMember={deleteMember}
-        />
-        <Footer>Navigation Elements</Footer>
+        <Switch>
+          <Route path="/members">
+            <MembersPage
+              members={members}
+              setMembers={setMembers}
+              bands={bands}
+              setBands={setBands}
+              getMembers={getMembers}
+              postMember={postMember}
+              patchMember={patchMember}
+              deleteMember={deleteMember}
+            />
+          </Route>
+        </Switch>
+        <Footer />
       </Grid>
     </Router>
   )
@@ -55,11 +60,4 @@ const Grid = styled.div`
   height: 100%;
   margin: 0;
   width: 100%;
-`
-const Footer = styled.footer`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  grid-area: footer;
-  background: #0a2a45;
 `
