@@ -24,7 +24,6 @@
   "license": "UNLICENSED",
   "dependencies": {
     "firebase": "^7.15.5",
-    "re-base": "4.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hooks-lib": "0.1.0",

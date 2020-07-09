@@ -1,4 +1,3 @@
-import Rebase from 're-base'
 import firebase from 'firebase'
 
 const config = {
@@ -14,17 +13,12 @@ const config = {
 
 const firebaseApp = firebase.initializeApp(config)
 const appAnalytics = firebase.analytics()
-
-const databaseDatabase = firebase.database(firebaseApp)
-const base = Rebase.createClass(databaseDatabase)
-
-const db = firebase.firestore()
-// const RehearsalRoomsRef = db.collection('rehearsal-rooms')
-// const bandsRef = db.collection('bands')
-const MembersDbRef = db.collection('members')
+const fbfs = firebase.firestore()
+// const RehearsalRoomsRef = fbfs.collection('rehearsal-rooms')
+// const bandsRef = fbfs.collection('bands')
+const MembersDbRef = fbfs.collection('members')
 
 export {
-  base,
   appAnalytics,
   firebaseApp,
   // RehearsalRoomsRef,
