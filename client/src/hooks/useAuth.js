@@ -1,10 +1,10 @@
-import { useState, createContext, useContext, useEffect } from 'react'
+import React, { useState, createContext, useContext, useEffect } from 'react'
 import { fbAuth } from '../base'
 
 const AuthContext = createContext()
 
 function useAuth() {
-   function signIn() {
+   function signIn(email, password) {
       fbAuth
          .signInWithEmailAndPassword(email, password)
          .catch(error => console.error(error))
@@ -22,6 +22,10 @@ function useAuth() {
             {children}
          </AuthContext.Provider>
       )
+   }
+   return {
+      AuthProvider,
+      signIn,
    }
 }
 export default useAuth
