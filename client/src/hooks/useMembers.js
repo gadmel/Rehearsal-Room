@@ -1,8 +1,18 @@
 import { useState, useEffect } from 'react'
-import { firebaseApp, MembersDbRef } from '../base'
+import { MembersDbRef } from '../base'
 
 function useMembers() {
   const [members, setMembers] = useState([])
+
+  useEffect(() => {
+    MembersDbRef.onSnapshot(snapshot => {
+      const newMembers = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      setMembers(newMembers)
+    })
+  }, [])
 
   function fetchMembers() {
     return MembersDbRef.get().then(querySnapshot => {
@@ -60,29 +70,6 @@ function useMembers() {
           })
       })
   }
-
-  // IMPORT END!
-
-  useEffect(() => {
-    MembersDbRef.onSnapshot(snapshot => {
-      const newMembers = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-      }))
-      setMembers(newMembers)
-    })
-  }, [])
-
-  // another version
-  // useEffect(() => {
-  //   MembersDbRef.onSnapshot(snapshot => {
-  //     const newMembers = snapshot.docs.map(doc => ({
-  //       id: doc.id,
-  //       ...doc.data(),
-  //     }))
-  //     setMembers(newMembers)
-  //   })
-  // }, [])
 
   return {
     members,
