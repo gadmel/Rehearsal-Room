@@ -1,28 +1,27 @@
 {
-  "name": "rehearsal-room",
-  "version": "0.1.0",
-  "description": "Rehearsal room app. Features for better repetition planning, communication between rehearsal room mates and for equipment purchase and maintainment.",
-  "main": "client/src/index.js",
-  "author": {
-    "name": "Gleb Abramov",
-    "e-mail": "abramov.gleb@gmail.com"
-  },
-  "private": true,
-  "license": "UNLICENSED",
-  "dependencies": {
-    "npm-run-all": "4.1.5"
-  },
-  "scripts": {
-    "start": "npm-run-all --parallel client",
-    "client": "cd client && npm start",
-    "postinstall": "cd client && npm i"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "devDependencies": {
-    "@babel/core": "7.8.7",
-    "babel-loader": "8.1.0",
-    "prettier": "1.19.1"
-  }
+   "name": "rehearsal-room",
+   "version": "0.1.0",
+   "description": "Rehearsal room app. Features for better repetition planning, communication between rehearsal room mates and for equipment purchase and maintainment.",
+   "main": "client/src/index.js",
+   "author": {
+      "name": "Gleb Abramov",
+      "e-mail": "abramov.gleb@gmail.com"
+   },
+   "private": true,
+   "license": "UNLICENSED",
+   "dependencies": {
+      "npm-run-all": "4.1.5"
+   },
+   "scripts": {
+      "start": "npm-run-all --parallel client",
+      "postinstall": "cd client && npm i"
+   },
+   "eslintConfig": {
+      "extends": "react-app"
+   },
+   "devDependencies": {
+      "@babel/core": "7.8.7",
+      "babel-loader": "8.1.0",
+      "prettier": "1.19.1"
+   }
 }
