@@ -13,7 +13,10 @@ function Footer() {
          <NavItem to="/members">
             <Icon icon={'users'}></Icon>
          </NavItem>
-         <NavItem to="/" onClick={() => fbAuth.signOut()}>
+         <NavItem
+            to="/login"
+            onClick={() => fbAuth.signOut().then(console.log('also success'))}
+         >
             <Icon icon={'sign-out-alt'}></Icon>
          </NavItem>
       </FooterStyled>
