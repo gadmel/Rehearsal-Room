@@ -1,13 +1,14 @@
-import React, { useState, createContext, useContext, useEffect } from 'react'
+import React, { useState, createContext, useEffect } from 'react'
 import { fbAuth } from '../base'
 
-const AuthContext = createContext()
-
 function useAuth() {
+   const AuthContext = createContext()
+
    function signIn(email, password) {
       fbAuth
          .signInWithEmailAndPassword(email, password)
          .catch(error => console.error(error))
+         .then(console.log('success'))
    }
 
    function AuthProvider({ children }) {

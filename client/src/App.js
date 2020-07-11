@@ -4,11 +4,12 @@ import styled from 'styled-components'
 import useMembers from './hooks/useMembers'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import LoginPage from './components/pages/LoginPage'
 import MembersPage from './components/pages/MembersPage/MembersPage'
 import useAuth from './hooks/useAuth'
 
 function App() {
-   const { AuthProvider } = useAuth()
+   const { AuthProvider, signIn } = useAuth()
 
    const [bands, setBands] = useState([
       { value: null },
@@ -36,6 +37,9 @@ function App() {
             <Grid>
                <Header />
                <Switch>
+                  <Route path="/login">
+                     <LoginPage signIn={signIn} />
+                  </Route>
                   <Route path="/members">
                      <MembersPage
                         members={members}
