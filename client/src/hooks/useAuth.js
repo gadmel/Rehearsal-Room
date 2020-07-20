@@ -9,6 +9,8 @@ function useAuth() {
          .signInWithEmailAndPassword(email, password)
          .catch(error => console.error(error))
          .then(console.log('success'))
+         .then(console.info(fbAuth))
+         .then(console.info(fbAuth.currentUser))
    }
 
    function AuthProvider({ children }) {
