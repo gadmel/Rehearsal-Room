@@ -15,7 +15,12 @@ function Footer() {
          </NavItem>
          <NavItem
             to="/"
-            onClick={() => fbAuth.signOut().then(console.log('also success'))}
+            onClick={() =>
+               fbAuth
+                  .signOut()
+                  .catch(err => console.error(err))
+                  .then(console.log('Logged out succesfully'))
+            }
          >
             <Icon icon={'sign-out-alt'}></Icon>
          </NavItem>

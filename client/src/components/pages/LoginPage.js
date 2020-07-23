@@ -8,7 +8,7 @@ function LoginPage({ signIn }) {
 
    return (
       <LoginStyled
-         onSubmit={handleSubmit((loginCredentials) => {
+         onSubmit={handleSubmit(loginCredentials => {
             signIn(loginCredentials.email, loginCredentials.password)
          })}
       >

@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {
+   BrowserRouter as Router,
+   Switch,
+   Route,
+   Redirect,
+} from 'react-router-dom'
 import styled from 'styled-components'
 import useMembers from './hooks/useMembers'
 import Header from './components/Header'
@@ -9,7 +14,7 @@ import MembersPage from './components/pages/MembersPage/MembersPage'
 import useAuth from './hooks/useAuth'
 
 function App() {
-   const { AuthProvider, signIn } = useAuth()
+   const { AuthProvider, signIn, currentUser, setCurrentUser } = useAuth()
 
    const [bands, setBands] = useState([
       { value: null },
@@ -37,8 +42,12 @@ function App() {
             <Grid>
                <Header />
                <Switch>
-                  <Route path="/login">
-                     <LoginPage signIn={signIn} />
+                  <Route path="/">
+                     {currentUser ? (
+                        <Redirect to={'/members'} />
+                     ) : (
+                        <LoginPage signIn={signIn} />
+                     )}
                   </Route>
                   <Route path="/members">
                      <MembersPage
