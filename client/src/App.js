@@ -26,24 +26,37 @@ function App() {
     deleteMember,
   } = useMembers()
 
-  return (
-    <Router>
-      <Grid>
-        <Header />
-        <MembersPage
-          members={members}
-          setMembers={setMembers}
-          bands={bands}
-          setBands={setBands}
-          getMembers={getMembers}
-          postMember={postMember}
-          patchMember={patchMember}
-          deleteMember={deleteMember}
-        />
-        <Footer>Navigation Elements</Footer>
-      </Grid>
-    </Router>
-  )
+   return (
+      <AuthProvider value={false}>
+         <Router>
+            <Grid>
+               <Header />
+               <Switch>
+                  <Route exact path="/">
+                     {currentUser !== (null || undefined) ? (
+                        <Redirect to={'/members'} />
+                     ) : (
+                        <LoginPage signIn={signIn} currentUser={currentUser} />
+                     )}
+                  </Route>
+                  <Route path="/members">
+                     <MembersPage
+                        members={members}
+                        setMembers={setMembers}
+                        bands={bands}
+                        setBands={setBands}
+                        getMembers={getMembers}
+                        postMember={postMember}
+                        patchMember={patchMember}
+                        deleteMember={deleteMember}
+                     />
+                  </Route>
+               </Switch>
+               <Footer />
+            </Grid>
+         </Router>
+      </AuthProvider>
+   )
 }
 
 export default App
