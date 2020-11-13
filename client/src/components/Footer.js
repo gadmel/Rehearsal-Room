@@ -7,7 +7,7 @@ import { fbAuth } from '../base'
 function Footer() {
    return (
       <FooterStyled>
-         <NavItem to="/calendar">
+         <NavItem to="#" /*to="/calendar"*/>
             <Icon icon={['far', 'calendar-alt']}></Icon>
          </NavItem>
          <NavItem to="/members">
