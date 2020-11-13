@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
    BrowserRouter as Router,
    Switch,
@@ -14,7 +14,14 @@ import MembersPage from './components/pages/MembersPage/MembersPage'
 import useAuth from './hooks/useAuth'
 
 function App() {
-   const { AuthProvider, signIn, currentUser, setCurrentUser } = useAuth()
+   const {
+      AuthProvider,
+      AuthContextConsumer,
+      signIn,
+      signOut,
+      currentUser,
+      setCurrentUser,
+   } = useAuth()
 
    const [bands, setBands] = useState([
       { value: null },
@@ -42,14 +49,15 @@ function App() {
             <Grid>
                <Header />
                <Switch>
-                  <Route path="/">
-                     {currentUser ? (
-                        <Redirect to={'/members'} />
-                     ) : (
-                        <LoginPage signIn={signIn} />
-                     )}
+                  <Route exact path="/">
+                     {/*                     {currentUser !== (null || undefined) ? (*/}
+                     <Redirect to={'/members'} />
+                     {/*   ) : (
+                        <LoginPage signIn={signIn} currentUser={currentUser} />
+                     )}*/}
                   </Route>
                   <Route path="/members">
+                     {/*               {currentUser ? (*/}
                      <MembersPage
                         members={members}
                         setMembers={setMembers}
@@ -60,9 +68,12 @@ function App() {
                         patchMember={patchMember}
                         deleteMember={deleteMember}
                      />
+                     {/*        ) : (
+                        <Redirect to={'/'} />
+                     )}*/}
                   </Route>
                </Switch>
-               <Footer />
+               <Footer signOut={signOut} currentUser={currentUser} />
             </Grid>
          </Router>
       </AuthProvider>
